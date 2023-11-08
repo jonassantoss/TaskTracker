@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #115666;
+  --primary-color-light: #1c94af;
+}
+
+body, html {
+  background-color: var(--primary-color);
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+}
+
+.container {
+  background-color: #fff;
+  width: 500px;
+  margin: 50px auto;
+  padding: 25px;
+  border-radius: 10px;
+}
+
+.container > * {
+  margin: 5px;
+}
