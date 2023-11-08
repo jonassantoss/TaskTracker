@@ -1,17 +1,31 @@
-let btn = document.querySelector('#btn-task')
+let saveButton = document.querySelector('#btn-task')
 let input = document.querySelector('#itask')
 let res = document.querySelector('#tasks')
+let addButton = document.querySelector('#add-button')
+let closeButton = document.querySelector('#close-button')
+let overlay = document.querySelector('#overlay')
+let inputPage = document.querySelector('.task-input-page')
+
+addButton.addEventListener('click', () => {
+  animationInputPage(true)
+})
 
 input.addEventListener('keypress', (e) => {
   if (e.keyCode == 13) {
     if (!input.value) return;
     createTask(input.value)
+    animationInputPage(false)
   }
 })
 
-btn.addEventListener('click', (e) => {
+saveButton.addEventListener('click', (e) => {
   if (!input.value) return
   createTask(input.value)
+  animationInputPage(false)
+})
+
+closeButton.addEventListener('click', () => {
+  animationInputPage(false)
 })
 
 res.addEventListener('click', (e) => {
@@ -21,6 +35,18 @@ res.addEventListener('click', (e) => {
     saveTask()
   }
 })
+
+function animationInputPage(animationState) {
+  if (animationState) {
+    overlay.style.display = 'flex'
+    overlay.style.opacity = 1
+    inputPage.style.transform = 'scale(1)'
+  } else {
+    overlay.style.opacity = 0
+    inputPage.style.transform = 'scale(0.8)'
+    setTimeout(() => overlay.style.display = 'none', 500)
+  }
+}
 
 function createTask(text) {
   let li = createLi(text)
