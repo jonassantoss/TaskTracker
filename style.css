@@ -10,7 +10,8 @@
   --primary-color-dark: #3c3d3d6c;
   --secondary-color: #115666;
   --secondary-color-light: #3e8d9e;
-  --task-available: #39e48f62;
+  --task-available: #1dc9e74f;
+  --task-done: #1de78262;
 }
 
 body,
@@ -22,10 +23,6 @@ html {
 h1 {
   margin-bottom: 10px;
   font-weight: 400;
-}
-
-img {
-  cursor: pointer;
 }
 
 .material-symbols-outlined {
@@ -67,7 +64,7 @@ img {
   transition: opacity 0.5s ease-in-out;
 }
 
-.task-input-page {
+.task-page {
   background-color: #fff;
   width: 50vw;
   height: 7vh;
@@ -81,27 +78,22 @@ img {
 }
 
 .task {
+  background-color: var(--task-available);
+  color: #fff;
   width: 96%;
   padding: 10px 0;
   border-radius: 10px;
+  padding: 5px 10px;
 
   display: flex;
-  justify-content: space-between;
   align-items: center;
 
   text-shadow: 1px 1px 0.5px #000;
 }
 
-.taskAvailable {
-  background-color: var(--task-available);
-  color: #fff;
-}
-
 .check-button {
-  width: 7%;
-  height: 90%;
-
   display: inline-block;
+  margin-right: 10em;
   cursor: pointer;
   transition: opacity 0.3s ease-in-out;
 }
@@ -110,15 +102,31 @@ img {
   opacity: 0;
 }
 
-#task-list {
-  width: 98%;
-  padding: 10px 0;
-  margin-top: 25px;
-  display: flex;
-  justify-content: center;
+.taskContent {
+  margin-right: 10em;
 }
 
-#itask {
+.edit-button {
+  margin-right: 1em;
+  display: inline-block;
+  cursor: pointer;
+
+  padding-right: 0;
+}
+
+.close-button {
+  position: fixed;
+  top: 1%;
+  left: 1%;
+
+  color: #fff;
+}
+
+.close-button:hover {
+  cursor: pointer;
+}
+
+.input {
   width: 75%;
   height: 50%;
 
@@ -130,9 +138,35 @@ img {
   transition: box-shadow 0.3s ease;
 }
 
-#itask:hover {
+.input:hover {
   outline: none;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.buttonTask {
+  width: 20%;
+  height: 40%;
+  background-color: #fff;
+  color: var(--secondary-color-light);
+  border: 1px var(--secondary-color-light) solid;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.buttonTask:hover {
+  background-color: var(--secondary-color-light);
+  color: #fff;
+  border: 1px var(--secondary-color) solid;
+  cursor: pointer;
+}
+
+#task-list {
+  width: 98%;
+  padding: 10px 0;
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
 }
 
 #add-button {
@@ -148,34 +182,4 @@ img {
   cursor: pointer;
   background-color: var(--secondary-color-light);
   transition: 0.5s;
-}
-
-#close-button {
-  position: fixed;
-  top: 1%;
-  left: 1%;
-
-  color: #fff;
-}
-
-#close-button:hover {
-  cursor: pointer;
-}
-
-#btn-task {
-  width: 20%;
-  height: 40%;
-  background-color: #fff;
-  color: var(--secondary-color-light);
-  border: 1px var(--secondary-color-light) solid;
-  border-radius: 5px;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-}
-
-#btn-task:hover {
-  background-color: var(--secondary-color-light);
-  color: #fff;
-  border: 1px var(--secondary-color) solid;
-  cursor: pointer;
 }

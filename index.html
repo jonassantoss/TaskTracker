@@ -14,8 +14,6 @@
 <body>
   <section class="container">
     <h1><strong>Tasks</strong> List</h1>
-    <!-- <input type="text" name="task" id="itask">
-    <input type="button" value="Enviar Tarefa" id="btn-task"> -->
 
     <div id="add-button" onclick="">
       <span class="material-symbols-outlined">
@@ -24,14 +22,25 @@
     </div>
     <span class="division-line">Add Task</span>
 
-    <div id="overlay" class="overlay">
-      <span id="close-button" class="material-symbols-outlined">
+    <div id="overlayCreateTask" class="overlay">
+      <span id="close-createTask-button" class="close-button material-symbols-outlined">
         close
       </span>
 
-      <div class="task-input-page">
-        <input type="text" name="task" id="itask" placeholder="Task name">
-        <input type="button" value="Save" id="btn-task">
+      <div id="task-input-page"class="task-page">
+        <input type="text" name="task" id="i-create-task" class="input" placeholder="Task name">
+        <input type="button" value="Save" id="btn-create-task" class="buttonTask">
+      </div>
+    </div>
+
+    <div id="overlayEditTask" class="overlay">
+      <span id="close-editTask-button" class="close-button material-symbols-outlined">
+        close
+      </span>
+
+      <div id="task-edit-page"class="task-page">
+        <input type="text" name="task" id="i-edit-task" class="input" placeholder="New  task name">
+        <input type="button" value="Save" id="btn-edit-task" class="buttonTask">
       </div>
     </div>
 
