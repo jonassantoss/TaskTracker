@@ -6,20 +6,30 @@
 }
 
 :root {
-  --primary-color: #5C6B70;
+  --primary-color: #5c6b70;
   --primary-color-dark: #3c3d3d6c;
   --secondary-color: #115666;
   --secondary-color-light: #3e8d9e;
+  --task-available: #39e48f62;
 }
 
-body, html {
+body,
+html {
   background-color: var(--primary-color);
-  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
 }
 
 h1 {
   margin-bottom: 10px;
   font-weight: 400;
+}
+
+img {
+  cursor: pointer;
+}
+
+.material-symbols-outlined {
+  cursor: pointer;
 }
 
 .division-line {
@@ -28,11 +38,15 @@ h1 {
 }
 
 .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   background-color: #fff;
   width: 500px;
   max-height: 650px;
   margin: 50px auto;
-  padding: 25px;
+  padding: 25px 0;
   border-radius: 10px;
 
   text-align: center;
@@ -66,6 +80,44 @@ h1 {
   transition: transform 0.5s ease-in-out;
 }
 
+.task {
+  width: 96%;
+  padding: 10px 0;
+  border-radius: 10px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  text-shadow: 1px 1px 0.5px #000;
+}
+
+.taskAvailable {
+  background-color: var(--task-available);
+  color: #fff;
+}
+
+.check-button {
+  width: 7%;
+  height: 90%;
+
+  display: inline-block;
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.check-button.checked {
+  opacity: 0;
+}
+
+#task-list {
+  width: 98%;
+  padding: 10px 0;
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+}
+
 #itask {
   width: 75%;
   height: 50%;
@@ -81,10 +133,6 @@ h1 {
 #itask:hover {
   outline: none;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-}
-
-#tasks {
-  margin-top: 25px;
 }
 
 #add-button {
