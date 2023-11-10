@@ -58,22 +58,16 @@ closeCreatePage.addEventListener('click', (e) => {
 
 res.addEventListener('click', (e) => {
   let button = e.target
-  if (button.classList.contains('erase')) {
+  if (button.className = 'erase') {
     button.parentElement.remove()
     saveTask()
   }
 })
 
-function handlePageClose(animationState, overlay, taskPage) {
-  if (animationState) {
-    overlay.style.display = 'flex'
-    overlay.style.opacity = 1
-    taskPage.style.transform = 'scale(1)'
-  } else {
-    overlay.style.opacity = 0
-    taskPage.style.transform = 'scale(0.8)'
-    setTimeout(() => overlay.style.display = 'none', 500)
-  }
+function createFrameTask() {
+  let frame = document.createElement('div')
+  frame.setAttribute('class', 'task')
+  return frame
 }
 
 function createTaskText(text) {
@@ -81,12 +75,6 @@ function createTaskText(text) {
   content.setAttribute('class', 'taskContent')
   content.innerText = text + ' '
   return content
-}
-
-function createFrameTask() {
-  let frame = document.createElement('div')
-  frame.setAttribute('class', 'task')
-  return frame
 }
 
 function createDeleteButton() {
@@ -160,15 +148,20 @@ function saveTask() {
   task.forEach((item) => {
     let text = item.textContent
     tasks.push(text)
-    let tasksJSON = JSON.stringify(tasks)
-    localStorage.setItem('Tarefas', tasksJSON)
   })
+  let tasksJSON = JSON.stringify(tasks)
+  localStorage.setItem('Tarefas', tasksJSON)
 }
 
 function loadTasks() {
   let tasksJSON = localStorage.getItem('Tarefas')
   let tasks = JSON.parse(tasksJSON)
   tasks.forEach((item) => createTask(item))
+}
+
+function clearInput() {
+  input.value = ''
+  input.focus()
 }
 
 function openEditPage(editButton) {
@@ -178,9 +171,16 @@ function openEditPage(editButton) {
   })
 }
 
-function clearInput() {
-  input.value = ''
-  input.focus()
+function handlePageClose(animationState, overlay, taskPage) {
+  if (animationState) {
+    overlay.style.display = 'flex'
+    taskPage.style.transform = 'scale(1)'
+    setTimeout(() => overlay.style.opacity = 1, 100)
+  } else {
+    overlay.style.opacity = 0
+    taskPage.style.transform = 'scale(0.8)'
+    setTimeout(() => overlay.style.display = 'none', 500)
+  }
 }
 
 loadTasks()
