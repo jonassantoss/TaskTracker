@@ -22,14 +22,14 @@ inputCreate.addEventListener('keypress', (e) => {
   if (e.keyCode == 13) {
     if (!inputCreate.value) return;
     createTask(inputCreate.value)
-    handlePageClose(false, overlayEditTask, taskEditPage)
+    handlePageClose(false, overlayCreateTask, taskCreatePage)
   }
 })
 
 saveCreateButton.addEventListener('click', (e) => {
   if (!inputCreate.value) return
   createTask(inputCreate.value)
-  handlePageClose(false, overlayEditTask, taskEditPage)
+  handlePageClose(false, overlayCreateTask, taskCreatePage)
 })
 
 inputEdit.addEventListener('keypress', (e) => {
@@ -53,12 +53,12 @@ closeEditPage.addEventListener('click', (e) => {
 })
 
 closeCreatePage.addEventListener('click', (e) => {
-  handlePageClose(false, overlayCreateTask, taskEditPage)
+  handlePageClose(false, overlayCreateTask, taskCreatePage)
 })
 
 res.addEventListener('click', (e) => {
   let button = e.target
-  if (button.className == 'erase') {
+  if (button.classList.contains('erase')) {
     button.parentElement.remove()
     saveTask()
   }
@@ -133,7 +133,7 @@ function checkTask(checkButton) {
     let task = checkButton.parentNode
     checkButton.classList.add('checked')
     setTimeout(() => {
-      if (checkButton.src.includes('unchecked.png')) {
+      if (checkButton.src.endsWith('unchecked.png')) {
         checkButton.src = 'img/checked.png'
         task.style.backgroundColor = '#1de78262'
         task.style.textDecoration = 'line-through'
@@ -150,6 +150,8 @@ function checkTask(checkButton) {
 
 function saveEditTask() {
   taskToEdit.textContent = inputEdit.value
+  saveTask()
+  clearInput()
 }
 
 function saveTask() {
@@ -158,9 +160,9 @@ function saveTask() {
   task.forEach((item) => {
     let text = item.textContent
     tasks.push(text)
+    let tasksJSON = JSON.stringify(tasks)
+    localStorage.setItem('Tarefas', tasksJSON)
   })
-  let tasksJSON = JSON.stringify(tasks)
-  localStorage.setItem('Tarefas', tasksJSON)
 }
 
 function loadTasks() {
