@@ -58,7 +58,7 @@ closeCreatePage.addEventListener('click', (e) => {
 
 res.addEventListener('click', (e) => {
   let button = e.target
-  if (button.className = 'erase') {
+  if (button.className === 'erase') {
     button.parentElement.remove()
     saveTask()
   }

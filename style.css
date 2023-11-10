@@ -117,6 +117,10 @@ h1 {
   cursor: pointer;
 }
 
+.erase {
+  cursor: pointer;
+}
+
 .close-button {
   position: fixed;
   top: 1%;
