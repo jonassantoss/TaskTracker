@@ -16,6 +16,7 @@ let taskToEdit;
 
 addButton.addEventListener('click', (e) => {
   handlePageClose(true, overlayCreateTask, taskCreatePage)
+  input.focus()
 })
 
 inputCreate.addEventListener('keypress', (e) => {
