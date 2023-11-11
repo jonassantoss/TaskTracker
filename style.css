@@ -11,7 +11,7 @@
   --primary-color-darker: #3c3d3db4;
   --secondary-color: #115666;
   --secondary-color-light: #3e8d9e;
-  --task-available: #02ff8162;
+  --task-available: #1dc9e74f;
   --task-done: #1de78262;
 }
 
@@ -30,8 +30,8 @@ h1 {
   position: relative;
 
   background-color: #fff;
-  width: 95vw;
-  height: 95vh;
+  width: 25vw;
+  min-height: 95vh;
   margin: 1em auto;
   padding: 25px 0;
   border-radius: 10px;
@@ -68,6 +68,7 @@ h1 {
   width: 50vw;
   height: 7vh;
   padding: 0 20px;
+  border-radius: 5px;
 
   display: flex;
   justify-content: space-between;
@@ -132,6 +133,11 @@ h1 {
   cursor: pointer;
 }
 
+.error-message {
+  display: none;
+  color: #ff0000;
+}
+
 .input {
   width: 75%;
   height: 50%;
@@ -155,7 +161,7 @@ h1 {
   color: var(--secondary-color-light);
   border: 1px var(--secondary-color-light) solid;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 12px;
   transition: background-color 0.3s ease;
 }
 
@@ -164,6 +170,38 @@ h1 {
   color: #fff;
   border: 1px var(--secondary-color) solid;
   cursor: pointer;
+}
+
+@media screen and (max-width: 400px) {
+  .task > *:not(.erase) {
+    margin-right: 20px;
+  }
+
+  .input {
+    width: 95%;
+    height: 50%;
+    margin-right: 5px;
+    font-size: 10px;
+  }
+
+  .buttonTask {
+    width: 40%;
+    height: 70%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .buttonTask {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .task-page {
+    padding: 10px;
+    width: 60vw;
+    height: 15vh;
+  }
 }
 
 #task-list {

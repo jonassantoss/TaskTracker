@@ -11,8 +11,10 @@ let taskCreatePage = document.querySelector('#task-input-page')
 let taskEditPage = document.querySelector('#task-edit-page')
 let closeCreatePage = document.querySelector('#close-createTask-button')
 let closeEditPage = document.querySelector('#close-editTask-button')
+let container = document.querySelector('.container')
 
-let taskToEdit;
+let taskToEdit
+let savedTasks = 0
 
 addButton.addEventListener('click', (e) => {
   handlePageClose(true, overlayCreateTask, taskCreatePage)
@@ -21,28 +23,43 @@ addButton.addEventListener('click', (e) => {
 
 inputCreate.addEventListener('keypress', (e) => {
   if (e.keyCode == 13) {
-    if (!inputCreate.value) return;
+    if (!inputCreate.value) {
+      errorMessage(0)
+      return
+    }
+
     createTask(inputCreate.value)
-    handlePageClose(false, overlayCreateTask, taskCreatePage)
+    // handlePageClose(false, overlayCreateTask, taskCreatePage)
   }
 })
 
 saveCreateButton.addEventListener('click', (e) => {
-  if (!inputCreate.value) return
+  if (!inputCreate.value) {
+    errorMessage(0)
+    return
+  }
+
   createTask(inputCreate.value)
   handlePageClose(false, overlayCreateTask, taskCreatePage)
 })
 
 inputEdit.addEventListener('keypress', (e) => {
   if (e.keyCode == 13) {
-    if (!inputEdit.value) return;
+    if (!inputEdit.value || !taskToEdit) {
+      errorMessage(1)
+      return
+    }
+
     saveEditTask()
     handlePageClose(false, overlayEditTask, taskEditPage)
   }
 })
 
 saveEditButton.addEventListener('click', (e) => {
-  if (!inputEdit.value || !taskToEdit) return
+  if (!inputEdit.value || !taskToEdit) {
+    errorMessage(1)
+    return
+  }
 
   saveEditTask()
 
@@ -160,6 +177,12 @@ function loadTasks() {
   tasks.forEach((item) => createTask(item))
 }
 
+// function verifyTasks() {
+//   let width = container.style.width
+
+//   if ()
+// }
+
 function clearInput() {
   input.value = ''
   input.focus()
@@ -182,6 +205,18 @@ function handlePageClose(animationState, overlay, taskPage) {
     taskPage.style.transform = 'scale(0.8)'
     setTimeout(() => overlay.style.display = 'none', 500)
   }
+}
+
+function errorMessage(i) {
+  let inputs = document.querySelectorAll('.input')
+  let errorMessage = inputs[i].previousElementSibling
+
+  errorMessage.style.display = 'block'
+  setTimeout(() => errorMessage.style.opacity = 1, 100)
+  setTimeout(() => {
+    errorMessage.style.opacity = 0
+    errorMessage.style.display = 'none'
+  }, 5000)
 }
 
 loadTasks()
