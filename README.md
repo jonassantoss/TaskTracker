@@ -19,9 +19,7 @@ Este é um projeto simples de lista de tarefas desenvolvido utilizando HTML, CSS
 
 ## Como Usar
 
-1. Clone o repositório.
-2. Abra o arquivo `index.html` no seu navegador.
-3. Comece a gerenciar suas tarefas!
+Basta apenas clicar no link a seguir que você será redirecionado para o site: https://task-tracker-six-lemon.vercel.app/
 
 ---
 
