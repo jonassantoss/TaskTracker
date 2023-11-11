@@ -13,7 +13,7 @@ Este é um projeto simples de lista de tarefas desenvolvido utilizando HTML, CSS
 ## Diferenciais do Projeto
 
 * **Persistência Local:** As tarefas são salvas localmente para garantir que permaneçam após a atualização da página.
-* **Estilo Atraente:** A interface é estilizada usando CSS puro, SASS, Bootstrap, Materialize, Tailwind, ou outras opções para uma experiência visual agradável.
+* **Estilo Atraente:** A interface é estilizada usando CSS puro.
 * **Responsividade:** A aplicação é projetada para ser totalmente responsiva, garantindo uma boa experiência em diferentes dispositivos.
 * **Utilização do Inglês:** O projeto é desenvolvido utilizando o idioma inglês para promover a internacionalização.
 
