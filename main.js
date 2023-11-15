@@ -29,7 +29,7 @@ inputCreate.addEventListener('keypress', (e) => {
     }
 
     createTask(inputCreate.value)
-    // handlePageClose(false, overlayCreateTask, taskCreatePage)
+    handlePageClose(false, overlayCreateTask, taskCreatePage)
   }
 })
 
